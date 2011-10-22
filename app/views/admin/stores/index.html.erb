@@ -1,9 +1,9 @@
 <%= render :partial => 'admin/shared/configuration_menu' %>
 
-<div class='toolbar'>
+<div class='toolbar' data-hook="toolbar">
   <ul class='actions'>
     <li>
-      <%= button_link_to t("new_store"), new_object_url, :icon => 'add'  %>
+      <%= button_link_to t("new_store"), new_object_url, :icon => 'add', :id => 'admin_new_store_link'  %>
     </li>
   </ul>
   <br class='clear' />
@@ -11,8 +11,8 @@
 
 <h1><%= t("stores") %></h1>
 
-<table class="index">
-  <thead>
+<table class="index" id="stores_listing">
+  <thead data-hook="admin_stores_index_headers">
     <th><%= t("name") %></th>
     <th><%= t("code") %></th>
     <th><%= t("send_mails_as") %></th>
@@ -21,13 +21,13 @@
   </thead>
   <tbody>
     <% @stores.each do |store|%>
-      <tr id="<%= dom_id store %>">
+      <tr id="<%= dom_id store %>" data-hook="admin_stores_index_rows">
         <td width="120px"><%= store.name %></td>
         <td width="80px"><%= store.code %></td>
         <td width="80px"><%= store.email %></td>
         <td width="220"><%= store.domains %></td>
         <td width="140px">
-          <%= link_to_edit store %> &nbsp;
+          <%= link_to_edit store, :class => 'edit' %> &nbsp;
           <%= link_to_delete store %>
         </td>
       </tr>

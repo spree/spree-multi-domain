@@ -108,6 +108,7 @@ module ActionView::Layouts
     end
   end
 
-  alias_method_chain :find_layout, :multi_store
+  #TODO: fix
+  #alias_method_chain :find_layout, :multi_store
 
 end
