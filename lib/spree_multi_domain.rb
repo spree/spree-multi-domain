@@ -1,5 +1,4 @@
 require 'spree_core'
-require 'spree_multi_domain_hooks'
 
 module SpreeMultiDomain
   class Engine < Rails::Engine
@@ -12,6 +11,9 @@ module SpreeMultiDomain
       
       Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
         Rails.env.production? ? require(c) : load(c)
+      end
+      Dir.glob(File.join(File.dirname(__FILE__), "../app/overrides/*.rb")) do |c|
+        Rails.application.config.cache_classes ? require(c) : load(c)
       end
 
     end
@@ -108,6 +110,7 @@ module ActionView::Layouts
     end
   end
 
-  alias_method_chain :find_layout, :multi_store
+  #TODO: fix, find_layout not in ActionView::Layouts, now in ActionView::TemplateRenderer.
+  #alias_method_chain :find_layout, :multi_store
 
 end
