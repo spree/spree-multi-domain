@@ -1,0 +1,4 @@
+<p>
+  <%= f.label :name, t("store") %> <span class="required">*</span><br />
+  <%= collection_select :order, :store_id, Spree::Store.all, :id, :name  %>
+</p>

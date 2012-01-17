@@ -1,5 +1,5 @@
 class AddEmailToStores < ActiveRecord::Migration
-  def self.up    
+  def self.up
     change_table :stores do |t|
       t.string :email
     end
