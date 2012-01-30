@@ -1,0 +1,9 @@
+de:
+  store: Online-Shop
+  stores: Online-Shops
+  new_store: Neuer Online Shop
+  domains: Domains
+  stores_admin: "Online Shops & Domains"
+  manage_stores: Mehrere Online Shops und deren zugehörigen Domains bzw. Rechnernamen bearbeiten
+  editing_store: Online Shop bearbeiten
+  default: Default
