@@ -1,6 +1,6 @@
 class CreateStores < ActiveRecord::Migration
   def self.up
-    create_table :stores do |t|
+    create_table :spree_stores do |t|
       t.string :name
       t.string :code
       t.text :domains
@@ -9,6 +9,6 @@ class CreateStores < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :stores
+    drop_table :spree_stores
   end
 end
