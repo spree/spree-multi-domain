@@ -1,7 +1,5 @@
 source 'http://rubygems.org'
 
-gem 'rails'
-
 if RUBY_VERSION < "1.9"
   gem "ruby-debug"
 else
@@ -9,5 +7,9 @@ else
 end
 
 gemspec
-gem 'spree'
+
+# When spree gem bumps, move dep to 1.2.
+#gem 'spree', '~> 1.2'
+gem 'spree', :git => 'git://github.com/spree/spree.git', :branch => '1-2-stable'
+
 gem 'ffaker'

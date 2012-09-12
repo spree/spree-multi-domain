@@ -1,14 +1,12 @@
 require 'spec_helper'
 
 describe Spree::Admin::ProductsController do
-
-  before do
-    controller.stub :current_user => FactoryGirl.create(:admin_user)
-  end
+  stub_authorization!
 
   describe "on :index" do
     it "renders index" do
-      get :index, :use_route => :spree
+      spree_get :index
+      response.should be_success
     end
   end
 
@@ -21,21 +19,18 @@ describe Spree::Admin::ProductsController do
     describe "when no stores are selected" do
       it "clears stores if they previously existed" do
         @product.stores << @store
-        @product.reload
 
-        put :update, :id => @product.permalink,
-                      :product => {:name => @product.name},
-                      :use_route => :spree
+        spree_put :update, :id => @product.to_param,
+                      :product => {:name => @product.name}
 
-        @product.store_ids.should be_empty
+        @product.reload.store_ids.should be_empty
       end
     end
 
     describe "when a store is selected" do
       it "clears stores" do
-        put :update, :id => @product.permalink,
-                      :product => {:name => @product.name, :store_ids => [@store.id]},
-                      :use_route => :spree
+        spree_put :update, :id => @product.to_param,
+                      :product => {:name => @product.name, :store_ids => [@store.id]}
 
         @product.reload.store_ids.should == [@store.id]
       end

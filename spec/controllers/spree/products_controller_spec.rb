@@ -1,11 +1,6 @@
 require 'spec_helper'
 
 describe Spree::ProductsController do
-
-  before do
-    controller.stub :current_user => FactoryGirl.create(:user)
-  end
-
   describe 'on :show to a product w/out correct store' do
     before(:each) do
       @store = FactoryGirl.create(:store)
@@ -13,12 +8,10 @@ describe Spree::ProductsController do
     end
 
     it 'should return 404' do
-      get :show, :id => @product.permalink, :use_route => :spree
+      spree_get :show, :id => @product.to_param
 
       response.response_code.should == 404
     end
-
-
   end
 
   describe 'on :show to a product w/ store' do
@@ -28,7 +21,7 @@ describe Spree::ProductsController do
     end
 
     it 'should return 200' do
-      get :show, :id => @product.permalink, :use_route => :spree
+      spree_get :show, :id => @product.to_param
 
       response.response_code.should == 200
     end
