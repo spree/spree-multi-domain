@@ -10,7 +10,8 @@ module SpreeMultiDomain
       end
 
       Spree::Config.searcher_class = Spree::Search::MultiDomain
-      ApplicationController.send :include, SpreeMultiDomain::MultiDomainHelpers
+# dhw      ApplicationController.send :include, SpreeMultiDomain::MultiDomainHelpers
+      Spree::BaseController.send :include, SpreeMultiDomain::MultiDomainHelpers
     end
 
     config.to_prepare &method(:activate).to_proc
