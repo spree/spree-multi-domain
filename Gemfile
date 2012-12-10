@@ -4,6 +4,6 @@ gem 'rails'
 
 gemspec
 
-gem 'spree', '~> 1.2.0'
+gem 'spree', :git => "https://github.com/spree/spree", :branch => '1-3-stable'
 
 gem 'ffaker'
