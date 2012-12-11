@@ -7,7 +7,7 @@ module Spree
     has_many :payment_methods, :through => :store_payment_methods
 
     validates_presence_of :name, :code, :domains
-    attr_accessible :name, :code, :default, :email, :domains
+    attr_accessible :name, :code, :default, :email, :domains, :payment_method_ids
 
     scope :default, where(:default => true)
     scope :by_domain, lambda { |domain| where("domains like ?", "%#{domain}%") }
