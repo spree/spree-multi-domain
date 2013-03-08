@@ -42,6 +42,15 @@
     <% end %>
   </div>
 
+  <div class="eight columns">
+    <%= image_tag @store.logo %>
+    <%= f.field_container :logo do %>
+      <%= f.label :logo, t(:logo) %><br />
+      <%= f.file_field :logo %>
+      <%= error_message_on :store, :logo %>
+    <% end %>
+  </div>
+
   <div class="omega eight columns">
     <%= f.field_container :payment_methods do %>
       <%= f.label :payment_methods, t(:payment_methods) %><br />
