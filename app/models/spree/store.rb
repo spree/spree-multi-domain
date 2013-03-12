@@ -4,7 +4,7 @@ module Spree
     has_many :taxonomies
     has_many :orders
 
-    validates_presence_of :name, :code, :domains
+    validates_presence_of :name, :code, :domains, :unless => :skip_validations
     attr_accessible :name, :code, :default, :email, :domains
 
     scope :default, where(:default => true)
@@ -17,6 +17,12 @@ module Spree
 
     def self.first_found_default
       @cached_default ||= Store.default.first
+    end
+
+    private
+    # If you want to prevent validations redefine this method to return true
+    def skip_validations
+      false
     end
   end
 end
