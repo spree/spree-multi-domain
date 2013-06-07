@@ -2,14 +2,14 @@ en:
   spree:
     back_to_store_list: Back To Store List
     default_currency: Default Currency
-    send_mail_as: Send Mail As
+    send_mails_as: Send Mail As
     logo: Logo
     yes: Yes
     no: No
     name: Store Name
     code: Store Code
-    payment_method: Payment Method
-    shipping_method: Shipping Method
+    payment_methods: Payment Method
+    shipping_methods: Shipping Method
     store: Store
     stores: Stores
     new_store: New Store
