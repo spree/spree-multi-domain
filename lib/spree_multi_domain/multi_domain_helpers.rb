@@ -9,9 +9,11 @@ module SpreeMultiDomain
       receiver.send :helper_method, :current_tracker
     end
 
-    def current_store      
-      client_domain = URI.parse(request.env['HTTP_REFERER']).host
-      @current_store ||= Spree::Store.current(client_domain)
+    def current_store
+      unless request.env['HTTP_REFERER'].empty?
+        client_domain = URI.parse(request.env['HTTP_REFERER']).host
+        @current_store = Spree::Store.current(client_domain)
+      end
       @current_store ||= Spree::Store.current(request.env['SERVER_NAME'])
     end
 
