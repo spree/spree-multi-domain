@@ -10,7 +10,7 @@ module SpreeMultiDomain
     end
 
     def current_store
-      unless request.env['HTTP_REFERER'].empty?
+      unless request.env['HTTP_REFERER'].nil?
         client_domain = URI.parse(request.env['HTTP_REFERER']).host
         @current_store = Spree::Store.current(client_domain)
       end
