@@ -20,9 +20,9 @@ require 'spec_helper'
 describe Spree::Store do
 
   before(:each) do
-    @store = FactoryGirl.create(:store, :domains => "website1.com\nwww.subdomain.com")
-    @store2 = FactoryGirl.create(:store, :domains => "freethewhales.com\nwhalesrule.com")
-    @store3 = FactoryGirl.create(:store, :domains => 'whales.com')
+    @store = FactoryGirl.create(:store, :domains => "website1.com, www.subdomain.com")
+    @store2 = FactoryGirl.create(:store, :domains => "freethewhales.com, whalesrule.com")
+    @store3 = FactoryGirl.create(:store, :domains => "whales.com")
   end
 
   it "should find stores by domain" do

@@ -62,9 +62,9 @@ module Spree
                                            OR domains like ? 
                                            OR domains like ?", 
                                           "#{domain}",
-                                          "#{domain}\n%",
-                                          "%\n#{domain}\n%",
-                                          "%\n#{domain}") }
+                                          "#{domain},%",
+                                          "%, #{domain},%",
+                                          "%, #{domain}") }
 
     has_attached_file :logo,
       :styles => { :mini => '48x48>', :small => '100x100>', :medium => '250x250>' },
