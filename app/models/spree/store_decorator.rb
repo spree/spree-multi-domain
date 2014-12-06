@@ -12,7 +12,7 @@ module Spree
 
     has_and_belongs_to_many :promotion_rules, :class_name => 'Spree::Promotion::Rules::Store', :join_table => 'spree_promotion_rules_stores', :association_foreign_key => 'promotion_rule_id'
 
-    if connection.column_exists?(:spree_stores, :logo_file_name)
+    if connection.table_exists?(:spree_stores) && connection.column_exists?(:spree_stores, :logo_file_name)
       has_attached_file :logo,
         :styles => { :mini => '48x48>', :small => '100x100>', :medium => '250x250>' },
         :default_style => :medium,
