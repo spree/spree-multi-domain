@@ -4,7 +4,12 @@ module SpreeMultiDomain
       class_option :auto_run_migrations, :type => :boolean, :default => false
 
       def add_javascripts
-        append_file "vendor/assets/javascripts/spree/backend/all.js", "//= require spree/backend/spree_multi_domain\n"
+        backend_js_file = "app/assets/stylesheets/spree/backend.js"
+        
+        if  File.exist?(backend_js_file)
+          append_file backend_js_file, "//= require spree/backend/spree_multi_domain\n"
+        end
+        
       end
 
       def add_migrations
