@@ -1,6 +1,13 @@
 fr:
   spree:
+    back_to_store_list: Revenir à la liste de boutiques
+    default_currency: Devise par défaut
+    send_mail_as: Envoyer courriel en temps 
+    payment_method: Méthode de paiment
+    shipping_method: Méthode de livraison
     store: Boutique
+    store_name: Nom
+    store_code: Code
     stores: Boutiques
     new_store: Nouvelle Boutique
     domains: Domaines
@@ -8,3 +15,10 @@ fr:
     manage_stores: Configurer les boutiques et les domaines associés
     editing_store: Modifier une boutique
     default: Defaut
+    promotion_rule_types:
+      store:
+        name: Store
+        description: "Store must match one from the list"
+    store_rule:
+      choose_stores: "Choose Stores"
+
