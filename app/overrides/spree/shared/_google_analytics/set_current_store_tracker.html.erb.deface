@@ -1,0 +1,2 @@
+<!-- replace 'erb:contains("if tracker = Spree::Tracker.current")' -->
+<% if tracker = current_tracker %>
