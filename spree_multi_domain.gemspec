@@ -2,10 +2,10 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_multi_domain'
-  s.version     = '1.0.0'
+  s.version     = '3.0.0'
   s.summary     = 'Adds multiple site support to Spree'
   s.description = 'Multiple Spree stores on different domains - single unified backed for processing orders.'
-  s.required_ruby_version = '>= 1.8.7'
+  s.required_ruby_version = '>= 1.9.2'
 
   s.authors           = ['Brian Quinn', 'Roman Smirnov', 'David North']
   s.email             = 'brian@railsdog.com'
@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  version = '~> 2.4.0.beta'
+  version = '~> 3.0.0'
   s.add_dependency 'spree_core', version
   s.add_dependency 'spree_backend', version
   s.add_dependency 'spree_frontend', version
