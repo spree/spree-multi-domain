@@ -20,7 +20,6 @@
   <th><%= Spree.t(:default) %></th>
   <th><%= Spree.t(:store_name) %></th>
   <th><%= Spree.t(:store_code) %></th>
-  <th><%= Spree.t(:zone) %></th>
   <th><%= Spree.t(:send_mails_as) %></th>
   <th><%= Spree.t(:domains) %></th>
   <th data-hook="admin_stores_index_header_actions" class="actions"></th>
@@ -32,7 +31,6 @@
       <td><%= store.default %></td>
       <td><%= store.name %></td>
       <td><%= store.code %></td>
-      <td><%= store.zone.try(:name) %></td>
       <td><%= store.mail_from_address %></td>
       <td><%= store.url %></td>
       <td data-hook="admin_stores_index_row_actions" class="actions">
