@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= label_tag :q_store_id_eq, Spree.t(:stores) %>
+      <%= f.select :store_id_eq, options_from_collection_for_select(Spree::Store.all, 'id', 'name', f.object.store_id_eq), {include_blank: true}, {class: 'select2'} %>
+    </div>
+  </div>
+</div>
