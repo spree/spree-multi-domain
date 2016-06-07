@@ -1,12 +1,13 @@
 Spree::Admin::ProductsController.class_eval do
   update.before :set_stores
+ alias :spree_update :update
 
   def update
     store_ids = params[:product][:store_ids]
     if store_ids.present?
       params[:product][:store_ids] = store_ids.split(',')
     end
-    super
+    spree_update
   end
 
   private
