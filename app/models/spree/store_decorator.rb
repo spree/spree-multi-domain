@@ -15,8 +15,6 @@ module Spree
     has_many :shipping_methods, through: :store_shipping_methods
 
     has_and_belongs_to_many :promotion_rules, class_name: 'Spree::Promotion::Rules::Store', join_table: 'spree_promotion_rules_stores', association_foreign_key: 'promotion_rule_id'
-  
-    validate :no_logo_errors
 
     has_attached_file :logo,
                       styles: { mini: '48x48>', small: '100x100>', logo: '250x250>', large: '600x600>' },
@@ -24,8 +22,9 @@ module Spree
                       url: '/spree/logos/:id/:style/:basename.:extension',
                       path: ':rails_root/public/spree/logos/:id/:style/:basename.:extension',
                       convert_options: { all: '-strip -auto-orient -colorspace sRGB' }
+
+    validate :no_logo_errors
     validates_attachment :logo,
-      presence: true,
       content_type: { content_type: %w(image/jpeg image/jpg image/png image/gif) }
 
     def find_dimensions
