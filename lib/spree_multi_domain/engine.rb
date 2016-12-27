@@ -12,7 +12,13 @@ module SpreeMultiDomain
       end
 
       Spree::Config.searcher_class = Spree::Search::MultiDomain
-      ApplicationController.send :include, SpreeMultiDomain::MultiDomainHelpers
+      # Add the store logic to *just* the spree controllers
+      Spree::BaseController.send :include, SpreeMultiDomain::MultiDomainHelpers
+
+      #if this is v1.2 and we're using spree_auth_devise, add it to a couple of others
+      # that don't inherit from Spree::BaseController
+      Spree::UserSessionsController.send  :include, SpreeMultiDomain::MultiDomainHelpers  unless Spree::UserSessionsController.is_a? Spree::BaseController
+      Spree::UserRegistrationsController.send  :include, SpreeMultiDomain::MultiDomainHelpers  unless Spree::UserSessionsController.is_a? Spree::BaseController
     end
 
     config.to_prepare &method(:activate).to_proc
