@@ -1,0 +1,13 @@
+<% content_for :page_title do %>
+  <%= link_to Spree.t(:stores), admin_stores_path %> /
+  <%= @store.name %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:back_to_stores_list), spree.admin_stores_path, class: 'btn-primary', icon: 'arrow-left' %>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/store_tabs', locals: {current: :translations} %>
+
+
+<%= render 'form' %>
