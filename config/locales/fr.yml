@@ -21,8 +21,4 @@ fr:
         name: Boutique
         description: "La boutique doit être dans la liste"
     store_rule:
-      choose_stores: "Choisir les boutiques"
-
-
-
-         
+      choose_stores: "Choisir les boutiques"     
