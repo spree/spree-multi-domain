@@ -20,7 +20,7 @@ module SpreeMultiDomain
     end
 
     def add_current_store_id_to_params
-      params[:current_store_id] = current_store.try(:id)
+      # params[:current_store_id] = current_store.try(:id)
     end
   end
 end
