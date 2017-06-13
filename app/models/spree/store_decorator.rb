@@ -15,8 +15,9 @@ module Spree
     has_attached_file :logo,
       styles: { mini: '48x48>', small: '100x100>', medium: '250x250>' },
       default_style: :medium,
-      url: 'stores/:id/:style/:basename.:extension',
-      path: 'stores/:id/:style/:basename.:extension',
+      default_url: '/default/spree/stores/noimage.png',
+      url: '/spree/stores/:id/:style/:basename.:extension',
+      path: ':rails_root/public/spree/stores/:id/:style/:basename.:extension',
       convert_options: { all: '-strip -auto-orient' }
 
     if respond_to? :logo_file_name
