@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'spree_analytics_trackers/factories'
 
 describe "Global controller helpers" do
 
