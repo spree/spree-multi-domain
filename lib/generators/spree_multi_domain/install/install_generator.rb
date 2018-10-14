@@ -11,6 +11,10 @@ module SpreeMultiDomain
         run 'rake railties:install:migrations FROM=spree_multi_domain'
       end
 
+      def add_store_default_logo
+        template '../templates/noimage.png', 'public/default/spree/stores/noimage.png'
+      end
+
       def run_migrations
         run_migrations = options[:auto_run_migrations] || ['', 'y', 'Y'].include?(ask 'Would you like to run the migrations now? [Y/n]')
         if run_migrations
@@ -18,6 +22,10 @@ module SpreeMultiDomain
         else
           puts 'Skipping rake db:migrate, don\'t forget to run it!'
         end
+      end
+
+      def self.source_root
+        File.expand_path('../templates', __FILE__)
       end
     end
   end
