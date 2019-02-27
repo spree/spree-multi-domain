@@ -1,0 +1,10 @@
+<% if @order.store %>
+  <tr>
+    <td id="store" width="35%" data-hook>
+      <strong><%= Spree.t(:store) %>:</strong>
+    </td>
+    <td>      
+      <%= @order.store.name %>    
+    </td>
+  </tr>
+<% end %>

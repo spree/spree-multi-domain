@@ -1,4 +1,23 @@
-<%= f.field_container :store_id, class: ['form-group'] do %>
-  <%= f.label :name, Spree.t(:store) %> <span class="required">*</span>
-  <%= f.collection_select(:store_id, Spree::Store.all, :id, :name, { include_blank: Spree.t('match_choices.none') }, { class: 'select2' }) %>
-<% end %>
+<p data-hook="admin_taxonomy_form_stores" class="omega two columns">
+  <%= f.field_container :stores, class: ['form-group'] do %>
+    <%= f.label :store_ids, Spree.t(:stores) %>
+    <% if can? :modify, Spree::Store %>
+      <%= f.hidden_field :store_ids, value: @taxonomy.store_ids.join(',') %>
+    <% elsif @taxonomy.stores.any? %>
+      <ul class="text_list">
+        <% @taxonomy.stores.each do |store| %>
+          <li><%= store.name %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <div class="alert alert-info">
+        <%= Spree.t(:no_resource_found, resource: :stores) %>
+      </div>
+    <% end %>
+  <% end %>
+</p>
+
+<script type="text/javascript" charset="utf-8">
+  Spree.routes.store_search = '<%= spree.admin_stores_path(format: :json) %>';
+  $('#taxonomy_store_ids').storeAutocomplete();
+</script>
