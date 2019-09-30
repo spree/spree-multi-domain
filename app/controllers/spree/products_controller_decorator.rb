@@ -2,6 +2,8 @@ module Spree
   module ProductsControllerDecorator
     def self.prepended(base)
       base.before_action :can_show_product, only: :show
+
+      base.include ::SpreeMultiDomain::MultiDomainHelpers
     end
 
     def index

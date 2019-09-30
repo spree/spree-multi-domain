@@ -1,5 +1,9 @@
 module Spree
   module HomeControllerDecorator
+    def self.prepended(base)
+      base.include ::SpreeMultiDomain::MultiDomainHelpers
+    end
+
     def index
       @searcher = build_searcher(params)
       @products = @searcher.retrieve_products
