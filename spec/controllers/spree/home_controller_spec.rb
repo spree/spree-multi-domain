@@ -6,7 +6,7 @@ describe Spree::HomeController do
     let!(:taxonomy2) { FactoryBot.create(:taxonomy) }
 
     before do
-      spree_get :index
+      get :index
     end
 
     it 'should return 200' do

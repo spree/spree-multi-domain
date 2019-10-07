@@ -8,11 +8,7 @@ describe Spree::ProductsController do
     let!(:store) { FactoryBot.create(:store) }
 
     it 'should raise ActiveRecord::RecordNotFound' do
-      # Skiping test for Spree version lower than 3.3
-      # due to this commit
-      # https://github.com/spree/spree/commit/acf52960f5b9582cdfe01f0cb563766b44aabbd5#diff-68c90f2736e3c896ad980e0cb654b41d
-      skip if Spree.version.to_d < 3.3
-      expect { spree_get :show, id: product.to_param }.to raise_error(ActiveRecord::RecordNotFound)
+      expect { get(:show, { params: { id: product.id } }) }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 
@@ -26,12 +22,8 @@ describe Spree::ProductsController do
     end
 
     it 'should raise ActiveRecord::RecordNotFound' do
-      # Skiping test for Spree version lower than 3.3
-      # due to this commit
-      # https://github.com/spree/spree/commit/acf52960f5b9582cdfe01f0cb563766b44aabbd5#diff-68c90f2736e3c896ad980e0cb654b41d
-      skip if Spree.version.to_d < 3.3
       controller.stub(current_store: store_2)
-      expect { spree_get :show, id: product.to_param }.to raise_error(ActiveRecord::RecordNotFound)
+      expect { get(:show, { params: { id: product.id } }) }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 
@@ -42,11 +34,11 @@ describe Spree::ProductsController do
       product.stores << store
     end
 
-    it 'should return 200' do
+    it 'should return 301' do
       controller.stub(current_store: store)
-      spree_get :show, id: product.to_param
+      get(:show, { params: { id: product.id } })
 
-      expect(response.status).to eq 200
+      expect(response.status).to eq 301
     end
   end
 
@@ -55,7 +47,7 @@ describe Spree::ProductsController do
     let!(:taxonomy2) { FactoryBot.create(:taxonomy) }
 
     before do
-      spree_get :index
+      get :index
     end
 
     it 'should return 200' do
