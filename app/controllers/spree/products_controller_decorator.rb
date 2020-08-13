@@ -4,6 +4,13 @@ module Spree
       base.before_action :can_show_product?, only: :show
     end
 
+    def index
+      @searcher = build_searcher(params.merge(include_images: true, current_store_id: current_store.id))
+      @products = @searcher.retrieve_products
+      @products = @products.includes(:possible_promotions) if @products.respond_to?(:includes)
+      @taxonomies = get_taxonomies
+    end
+
     private
 
     def can_show_product?
