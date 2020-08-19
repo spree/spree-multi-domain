@@ -70,7 +70,7 @@ describe Spree::Admin::ProductsController do
           }
         }
 
-        expect(product.reload.store_ids).to eq(store_ids)
+        expect(product.reload.store_ids.sort).to eq(store_ids)
       end
     end
   end
