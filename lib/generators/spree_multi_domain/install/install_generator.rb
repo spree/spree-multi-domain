@@ -3,6 +3,12 @@ module SpreeMultiDomain
     class InstallGenerator < Rails::Generators::Base
       class_option :auto_run_migrations, type: :boolean, default: false
 
+      def set_searcher
+        initializer "spree_multi_domain.rb" do
+          "Spree::Config.searcher_class = Spree::Search::MultiDomain"
+        end
+      end
+
       def add_javascripts
         append_file 'vendor/assets/javascripts/spree/backend/all.js', "//= require spree/backend/spree_multi_domain\n"
       end
