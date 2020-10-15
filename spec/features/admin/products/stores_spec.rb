@@ -5,9 +5,9 @@ describe 'Product Stores', type: :feature, js: true do
 
   before do
     create(:product)
-    create(:store, default_currency: 'USD', name: 'First store')
-    create(:store, default_currency: 'USD', name: 'Second store')
-    create(:store, default_currency: 'USD', name: 'Marketplace')
+    create(:store, default_currency: 'USD', name: 'First store', code: 'Spree1')
+    create(:store, default_currency: 'USD', name: 'Second store', code: 'Default1')
+    create(:store, default_currency: 'USD', name: 'Marketplace', code: 'Marketplace1')
     visit spree.admin_products_path
 
     within_row(1) { click_icon :edit }
