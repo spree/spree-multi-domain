@@ -8,7 +8,7 @@ describe 'Template renderer with dynamic layouts' do
     ApplicationController.view_paths = [
       ActionView::FixtureResolver.new(
         'spree/layouts/spree_application.html.erb' => 'Default layout <%= yield %>',
-        "spree/layouts/#{my_store.code}/spree_application.html.erb" => 'Store layout <%= yield %>',
+        "spree/layouts/my_store/spree_application.html.erb" => 'Store layout <%= yield %>',
         'application/index.html.erb' => 'hello'
       )
     ]

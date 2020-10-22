@@ -3,11 +3,20 @@ require 'spec_helper'
 describe 'Product Stores', type: :feature, js: true do
   stub_authorization!
 
+  let!(:store)   { create(:store, default_currency: 'USD', name: 'First store', code: 'first_store', default: true) }
+  let!(:store_0) { create(:store, default_currency: 'USD', name: 'Second store', code: 'second_store') }
+  let!(:store_1) { create(:store, default_currency: 'USD', name: 'Marketplace', code: 'marketplace') }
+  let!(:product) { create(:product) }
+
   before do
-    create(:product)
-    create(:store, default_currency: 'USD', name: 'First store', code: 'Spree1')
-    create(:store, default_currency: 'USD', name: 'Second store', code: 'Default1')
-    create(:store, default_currency: 'USD', name: 'Marketplace', code: 'Marketplace1')
+    ApplicationController.view_paths = [
+        ActionView::FixtureResolver.new(
+            'spree/layouts/spree_application.html.erb' => 'Default layout <%= yield %>',
+            "spree/layouts/first_store/spree_application.html.erb" => 'Store layout <%= yield %>',
+            'application/index.html.erb' => 'hello'
+        )
+    ]
+
     visit spree.admin_products_path
 
     within_row(1) { click_icon :edit }
