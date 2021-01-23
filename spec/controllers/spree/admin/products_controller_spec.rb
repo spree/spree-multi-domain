@@ -66,7 +66,7 @@ describe Spree::Admin::ProductsController do
           id: product.to_param,
           product: {
             name: product.name,
-            store_ids: store_ids.join(',')
+            store_ids: store_ids
           }
         }
 

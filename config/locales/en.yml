@@ -14,6 +14,7 @@ en:
     manage_stores: Configure multiple stores and associated domain names
     editing_store: Editing Store
     default: Default
+    select_stores: Select Store(s)
     store_name: Name
     store_code: Code
     promotion_rule_types:

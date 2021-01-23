@@ -1,4 +1,6 @@
-<p>
-  <label><%= Spree.t(:store) %></label><br />
-  <%= f.select :stores_id_eq, Spree::Store.all.collect {|s| [s.name, s.id ] }, {include_blank: true} %></p>
-</p>
+<div class="col-12 col-lg-6">
+  <div class="form-group">
+    <label for="stores_id_in"><%= Spree.t(:store) %></label>
+    <%= f.select :stores_id_in, Spree::Store.pluck(:name, :id), {include_blank: true}, class: 'select2-clear', multiple: true %></p>
+  </div>
+</div>

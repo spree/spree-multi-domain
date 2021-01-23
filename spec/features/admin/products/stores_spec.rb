@@ -14,33 +14,15 @@ describe 'Product Stores', type: :feature, js: true do
   end
 
   context 'editing product stores' do
-    it 'shows stores that match query' do
-      fill_in 'Stores', with: 'sto'
-
-      expect(page).to have_content 'First store'
-      expect(page).to have_content 'Second store'
-      expect(page).not_to have_content 'Marketplace'
-    end
-
-    it 'still shows stores that match query' do
-      fill_in 'Stores', with: 'place'
-
-      expect(page).not_to have_content 'First store'
-      expect(page).not_to have_content 'Second store'
-      expect(page).to have_content 'Marketplace'
-    end
-
     it 'updates list of stores that product is assigned to' do
-      fill_in 'Stores', with: 'place'
-
-      within('#select2-drop') do
-        first('.select2-result').click
-      end
+      select2 'Marketplace', from: 'Stores'
+      select2 'Second store', from: 'Stores'
 
       click_button 'Update'
 
       expect(page).to have_content 'successfully updated'
       expect(page).to have_content 'Marketplace'
+      expect(page).to have_content 'Second store'
     end
   end
 end

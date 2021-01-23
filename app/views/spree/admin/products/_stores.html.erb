@@ -2,7 +2,7 @@
   <%= f.field_container :stores, class: ['form-group'] do %>
     <%= f.label :store_ids, Spree.t(:stores) %>
     <% if can? :modify, Spree::Store %>
-      <%= f.hidden_field :store_ids, value: @product.store_ids.join(',') %>
+      <%= f.select :store_ids, @stores, { include_blank: true }, { class: 'select2-clear', multiple: true, "data-placeholder" => Spree.t(:select_stores) } %>
     <% elsif @product.stores.any? %>
       <ul class="text_list">
         <% @product.stores.each do |store| %>
@@ -16,8 +16,3 @@
     <% end %>
   <% end %>
 </p>
-
-<script type="text/javascript" charset="utf-8">
-  Spree.routes.store_search = '<%= spree.admin_stores_path(format: :json) %>';
-  $('#product_store_ids').storeAutocomplete();
-</script>

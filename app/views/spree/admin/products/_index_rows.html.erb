@@ -1,1 +1,5 @@
-<td><%= product.stores.pluck(:name).join(", ") unless product.stores.empty? %></td>
+<td>
+  <% product.stores.pluck(:name).each do |store_name| %>
+    <dd><small><%= store_name %></small></dd>
+  <% end %>
+</td>

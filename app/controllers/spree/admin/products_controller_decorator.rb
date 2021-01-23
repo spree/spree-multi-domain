@@ -2,16 +2,13 @@ module Spree
   module Admin
     module ProductsControllerDecorator
       def self.prepended(base)
-        base.before_action :find_stores, only: [:update]
+        base.before_action :load_stores, only: [:edit, :update]
       end
 
       private
 
-      def find_stores
-        store_ids = params[:product][:store_ids]
-        if store_ids.present?
-          params[:product][:store_ids] = store_ids.split(',')
-        end
+      def load_stores
+        @stores = Spree::Store.pluck(:name, :id)
       end
     end
   end
