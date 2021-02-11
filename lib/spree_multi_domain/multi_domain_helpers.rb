@@ -4,7 +4,6 @@ module SpreeMultiDomain
       receiver.send :helper, 'spree/products'
       receiver.send :helper, 'spree/taxons'
 
-      receiver.send :before_action, :add_current_store_id_to_params
       receiver.send :helper_method, :taxons_for_search
     end
 
@@ -12,10 +11,6 @@ module SpreeMultiDomain
       @taxonomies ||= current_store.present? ? Spree::Taxonomy.by_store(current_store) : Spree::Taxonomy
       @taxonomies = @taxonomies.includes(root: :children)
       @taxonomies
-    end
-
-    def add_current_store_id_to_params
-      params[:current_store_id] = current_store.try(:id)
     end
 
     def taxons_for_search
