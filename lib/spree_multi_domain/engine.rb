@@ -23,11 +23,6 @@ module SpreeMultiDomain
     initializer 'templates with dynamic layouts' do
       ActionView::TemplateRenderer.prepend(
         Module.new do
-          def render(context, options)
-            @view = context
-            super(context, options)
-          end
-
           def resolve_layout(layout, keys, formats)
             details = @details.dup
             details[:formats] = formats
