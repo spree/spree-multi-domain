@@ -5,6 +5,8 @@ describe 'Template renderer with dynamic layouts' do
   let!(:other_store) { create(:store, code: 'other_store', url: 'other.example.com') }
 
   before do
+    @original_paths = ApplicationController.view_paths
+
     ApplicationController.view_paths = [
       ActionView::FixtureResolver.new(
         'spree/layouts/spree_application.html.erb' => 'Default layout <%= yield %>',
@@ -12,6 +14,10 @@ describe 'Template renderer with dynamic layouts' do
         'application/index.html.erb' => 'hello'
       )
     ]
+  end
+
+  after do
+    ApplicationController.view_paths = @original_paths
   end
 
   it 'should render the layout corresponding to the current store' do
