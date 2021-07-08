@@ -1,4 +1,4 @@
-module Spree
+module SpreeMultiDomain
   module ShippingMethodDecorator
     def self.prepended(base)
       base.has_and_belongs_to_many :stores
@@ -13,4 +13,4 @@ module Spree
   end
 end
 
-::Spree::ShippingMethod.prepend(Spree::ShippingMethodDecorator)
+::Spree::ShippingMethod.prepend(SpreeMultiDomain::ShippingMethodDecorator)

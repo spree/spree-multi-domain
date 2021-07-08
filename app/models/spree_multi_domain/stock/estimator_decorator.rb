@@ -1,4 +1,4 @@
-module Spree
+module SpreeMultiDomain
   module Stock
     module EstimatorDecorator
 
@@ -20,4 +20,4 @@ module Spree
   end
 end
 
-::Spree::Stock::Estimator.prepend(Spree::Stock::EstimatorDecorator)
+::Spree::Stock::Estimator.prepend(SpreeMultiDomain::Stock::EstimatorDecorator)
