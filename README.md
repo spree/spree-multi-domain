@@ -1,3 +1,7 @@
+# ⚠️ Deprecation notice ⚠️
+
+Since Spree 4.3 this extension is deprecated and not needed. Multi Store feature is now built-in into Spree 4.3 and greatly expanded. Please see: https://github.com/spree/spree/discussions/11232
+
 # Multi Domain Store
 
 Part of this extension was pulled into Spree 4.2. With Spree 4.3 full feature set will be available in Spree core. Upgrade process will be as easy as removing the extension from your Gemfile.
